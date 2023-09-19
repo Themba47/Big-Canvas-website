@@ -17,7 +17,7 @@ $data = [
 
 
 // Anonymous test key. Replace with your key.
-$secret_key = 'sk_live_831ada57z7KoWAB27534f6583576';
+$secret_key = '';
 
 // Initialise the curl handle
 $ch = curl_init();
@@ -49,9 +49,6 @@ $response = json_decode($result, true);
         header("location: index.php");
     }
 
-//     $to='sishubats@gmail.com';
-//     $headers="info@bigcanvas.co.za";
-//     $subject='Big Canvas client: '.$name."\n";
     
 //     $message="Name: ".$name."\n"."Email: ".$email."\n"."Whatsapp number: ".$whatsapp."\n"."message: ".$msg."\n";
     
