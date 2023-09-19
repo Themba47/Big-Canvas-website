@@ -1,0 +1,156 @@
+.main {
+	margin-top: 0;
+}
+
+.ingoma {
+	background-image: linear-gradient(#f2360b, #fff, #fff);
+	text-align: center;
+	margin: 5% 0;
+	border-radius: 30px;
+	width: 50vw;
+	height: 90vh;
+	transform: translateX(50%);
+}
+
+.the-stombe {
+	display: inline-block;
+	width: 75%;
+	height: 50vh;
+	border-radius: 50px;
+}
+
+.vynl {
+	top: 0;
+	width: 75%;
+	position: relative;
+	animation: spina 2.5s infinite linear;
+}
+
+@keyframes spina {
+ 0% { transform: rotate(0deg); }
+
+
+ 100% { transform:rotate(359deg);}
+}
+
+.amanobs {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.amanobs div {
+	transform: translateY(50%);
+}
+
+.desc {
+	
+}
+
+.slidergrey {
+    background-color: lightgrey;
+    height: 4px;
+    width: 90%;
+    display: inline-block;
+}
+
+.rslider {
+    -webkit-appearance: none;
+    width: 90%;
+    height: 4px;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+    opacity: 1;
+    -webkit-transition: 0.9s;
+    transition: all ease-in-out 0.02s;
+    transform: translateY(-16px);
+}
+
+.dd {
+	background: #fff0;
+	padding: 5%;
+	border-radius: 50%;
+	border: 2px solid black;
+	-webkit-filter: drop-shadow(5px 7px 3.5px #747474);
+	filter: drop-shadow(5px 7px 3.5px #747474);
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media(max-width: 768px) {
+	.ingoma {
+	background-color: #2892b5;
+	text-align: center;
+	margin: 0;
+	border-radius: 30px;
+	width: 100vw;
+	height: 90vh;
+	transform: translateX(0);
+}
+
+.vynl {
+	top: 25%;
+	
+}
+
+	.desc p {
+		font-size: 10px;
+	}
+
+	.content {
+		text-align: center;
+		margin: 0;
+		padding: 2.5% 0;
+		left: 3%;
+		width: 90%;
+	}
+
+	nav {
+		display: none;
+
+	}
+
+	#user-on-head {
+		display: block;
+		transform: translateY(-5px);
+		margin-right: 5%;
+		text-align: right;
+	}
+
+
+	nav #burger a {
+		display: inline-block;
+		margin: 2% 0 0 0;
+
+	}
+
+
+	#header div a {
+		text-decoration: none;
+		font-size: 20px;
+		color: white;
+
+	}
+
+	#myInput {
+		background-position: 5px 6px;
+		background-size: 10%;
+		padding-left: 10%;
+
+	}
+
+	#brand img {
+		height: 32px;
+		width: 32px;
+	}
+
+	#upload_form a {
+		font-size: 20px;
+	}
+
+	#upload_form a img {
+		width: 30px;
+	}
+
+}
+
+

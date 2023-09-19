@@ -1,0 +1,76 @@
+{"thebooks": [
+	{
+	"name": "Start with why",
+	"author": "Simon Sinek",
+	"ncwade": "json/startwithwhy.txt",
+	"section": "business",
+	"image": "img/startwithwhy.png",
+	"link": "startwithwhy.html"
+},
+	 {
+	"name": "Think and grow rich",
+	"author": "Napolean Hill",
+	"ncwade": "json/thinkandgrow.txt",
+	"section": "psychology",
+	"image": "img/thinkandgrow.png",
+	"link": "thinkandgrowrich.html"
+},
+{
+	"name": "Subtle Art of not givin a f*ck",
+	"author": "Mark Manson",
+	"ncwade": "json/subtleartof.txt",
+	"section": "psychology",
+	"image": "img/subtleart.png",
+	"link": "subtleartof.html"
+},
+{
+	"name": "The monk who sold his ferrari",
+	"author": "Robin Sharma",
+	"ncwade": "json/themonk.txt",
+	"section": "psychology",
+	"image": "img/themonkwhosoldhisferrari.png",
+	"link": "themonkwhosoldhisferrari.html"
+},
+{
+	"name": "The millionaire fastlane",
+	"author": "MJ DeMarco",
+	"ncwade": "json/mfastlane.txt",
+	"section": "business",
+	"image": "img/mfastlane.png",
+	"link": "themfastlane.html"
+},
+{
+	"name": "15 secrets successful people know about time management",
+	"author": "Kevin Kruse",
+	"ncwade": "json/fifteensecrets.txt",
+	"section": "psychology",
+	"image": "img/fifteensecrets.png",
+	"link": "fifteensecrets.html"
+},
+{
+	"name": "Mastery",
+	"author": "Robert Greene",
+	"ncwade": "json/mastery.txt",
+	"section": "psychology",
+	"image": "img/mastery.png",
+	"link": "mastery.html"
+},
+{
+	"name": "The fourth industrial revolution",
+	"author": "Klaus Schwab",
+	"ncwade": "json/fourthir.txt",
+	"section": "current affairs",
+	"image": "img/fourthir.png",
+	"link": "fourthir.html"
+},
+{
+	"name": "5 second rule",
+	"author": "Mel Robbins",
+	"ncwade": "json/fivesecondrule.txt",
+	"section": "psychology",
+	"image": "img/fivesecondrule.png",
+	"link": "fivesecondrule.html"
+}
+
+]}
+

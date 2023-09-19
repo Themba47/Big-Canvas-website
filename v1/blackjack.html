@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .green-table {
+                background-color: rgb(0, 133, 42);
+                width: 100%;
+                height: 100vh;
+                display: grid;
+                grid-template-rows: 40% 1fr 10%;
+                position: absolute;
+            }
+            .placebet {
+                background-color: #fff;
+                text-align: center;
+                left: 50%;
+                top: 40%;
+                transform: translate(-50%, -50%);
+                border-radius: 10px;
+                width: 60%;
+                position: fixed;
+                z-index: 3;
+                padding: 5%;
+                display: grid;
+                place-items: center;
+            } 
+
+            .btn-div, .placebet h2 {
+                margin: 5%;
+            } 
+
+            .digits {
+                position: absolute;
+                height: 30%;
+                z-index: 1;
+                display: grid;
+                grid-template-rows: 1fr 1fr 1fr;
+                background-color: rgba(255, 255, 255, 0.4);
+                border-radius: 10px;
+                padding: 5%;
+                top: 40%;
+                right: 2%;
+                transform: translate(0, -50%);
+            }
+
+            .total, .pot {
+                width: 30px;
+                height: 30px;
+                display: grid;
+                place-items: center;
+                text-align: center;
+                font-size: x-large;
+                color: #fff;
+                border: 1px solid #fff;
+                background-color: brown;
+                padding: 7%;
+                margin: 10%;
+                border-radius: 30px;
+            }
+
+            .pot {
+                background-color: rgb(255, 255, 255);
+                color: black;
+                border: 2px dashed red;
+         
+            }
+            .losewin {
+                text-align: center;
+                position: absolute;
+                color: rgb(255, 255, 255);
+                z-index: 2;
+                top: 38%;
+                left: 32%;
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+                transition: 1s ease-in;
+            }
+
+
+            @keyframes bj {
+                100% { 
+                    transform: scale(1.5);
+                    opacity: 1;
+                }
+            }
+
+            #result {
+                text-align: center;
+                position: absolute;
+                z-index: 3;
+                left: 50%;
+                transform: translateX(-50%);
+                transition: 1s ease-in;
+            }
+            
+
+            .busted {
+                color: brown;
+            }
+
+            .tools {
+                display: grid;
+                place-items: center;
+                grid-template-columns: 1fr 1fr 1fr;
+                width: 100%;
+                position: fixed;
+                z-index: 2;
+                bottom: 5%;
+            }
+            .tools button {
+                background-color: brown;
+                color: #fff;
+                padding: 5%;
+                border: none;
+                font-size: xx-large;
+                border-radius: 10px;
+            }
+
+            button:active {
+                opacity: 0.7;
+                transform: scale(0.9,0.9);
+            }
+
+            .placebet button {
+                border: none;
+                background-color: rgb(13, 208, 89);
+                padding: 10%;
+                color: #fff;
+                border-radius: 10px;
+                font-size: x-large;
+            }
+
+            #playagain {
+                font-size: larger;
+                position: absolute;
+                background-color: rgb(13, 208, 89);
+            }
+            
+            #mybet {
+                font-size: larger;
+                width: 60px;
+                height: 40px;
+                border: 1px solid #000;
+            }
+
+            .card-display {
+                height: 100%;
+                display: grid;
+                place-items: center;
+            }
+            
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            
+            /* Firefox */
+            input[type=number] {
+              -moz-appearance: textfield;
+            }
+
+            .cards {
+                background-color: tomato;
+                border: 1.5px solid #fff;
+                color: #fff;
+                display: grid;
+                place-items: center;
+                font-size: xx-large;
+                border-radius: 10px;
+                padding: 5%;
+                width: 60px;
+                height: 120px;
+                transition: 3s ease-in;
+                
+            }
+
+            .last-card {
+                transform: translateX(100%) rotateY(180deg);
+                transition: .7s ease-in;
+                color: transparent;
+                animation: draw 0.5s ease-in forwards;
+            }
+
+
+            @keyframes draw {
+                45% {color: transparent; transform: rotateY(180deg);}
+                100% { 
+                    transform: translateX(0);
+                    color: #fff;
+                }
+                
+            }
+            @keyframes displaytotal {
+                100% {color: #fff;}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="placebet">
+                <h2 id="number_of_chips"></h2>
+                <h2>Place Bet</h2><br><br>
+                <input type="number" id="mybet" value="5">
+                <div class="btn-div"></div>
+            </div>
+           
+            <div class="digits">
+                <h1 class="dealer-total total"></h1>
+                <h2 class="pot">0</h2>
+                <h1 class="user-total total"></h1>
+            </div>
+            <div class="the-bet"></div>
+            <div class="green-table">
+                <div class="dealer">
+                    <div class="dealer-screen card-display"></div>
+                </div>
+                <div class="user">
+                    <div class="screen card-display"></div>
+                </div>
+                <div class="tools"></div>
+            </div>
+            <h1 class="losewin"></h1>
+        </div>
+        
+        <script>
+            let cards = [1, 1, 2, 9, 4, 5, 7, 5, 6, 10, 7, 6, 7, 8, 9, 2, 10, 11, 3, 11],
+            busthand = [
+                [9,3,10],
+                [10,4,9],
+                [3,8,1,11],
+                [6,3,11],
+                [6,1,3,8],
+                [10,9],
+                [7,11],
+                [2,1,4,7],
+                [6,9],
+                [4,11],
+                [3,1,10]
+            ],
+            dealer_hand = [],
+            user_hand = [],
+            split_hand = [],
+            dealer_total = 0,
+            user_total = 0,
+            bet = 2,
+            user_stay = false,
+            chips = 20,
+            number_of_plays = 0,
+            played_before = localStorage.getItem("played-before") === true ? true: false,
+            second_timer,
+            timer,
+            d = new Date(),
+            dString = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDate(),
+            container = document.querySelector(".container"),
+            dealer = document.querySelector(".dealer-screen"),
+            losewin = document.querySelector(".losewin"),
+            pot = document.querySelector('.pot'),
+            noc = document.querySelector("#number_of_chips"),
+            tools = document.querySelector('.tools'),
+            placebet = document.querySelector('.placebet'),
+            user = document.querySelector(".screen");
+
+
+            window.addEventListener('load', () => {
+                if(localStorage.getItem("chips") <= 4 && localStorage.getItem("mydate") != dString) {
+                chips = 20;
+            }
+            if(localStorage.getItem("chips") > 4) {
+                chips = parseInt(localStorage.getItem("chips"));
+            }
+            if(localStorage.getItem("mydate") === null || localStorage.getItem("mydate") != dString) {
+                localStorage.setItem("mydate", dString);
+            }
+            displayChips()
+            })
+
+            function random_num() {
+                let num = cards[Math.floor(Math.random() * cards.length)];
+                if(typeof num != "number") {
+                    return cards[7];
+                }
+                return num;
+            }
+
+            function displayChips() {
+                noc.style.color = "brown";
+                noc.innerHTML = `You have ${chips} chips`;
+            }
+
+            function display(ev) {
+                var dealerGrid = '';
+                var userGrid = '';
+                dealer.innerHTML = '';
+                user.innerHTML = '';
+                
+
+                dealer_hand.forEach((element, index) => {
+                    dealerGrid += '1fr ';
+                    if(index != dealer_hand.length - 1) {
+                    dealer.innerHTML += `<div class="cards">${element}</div>`;
+                    } 
+                    if(index == dealer_hand.length - 1 && ev != 1) {
+                        dealer.innerHTML += `<div class="cards last-card">${element}</div>`; 
+                    }
+                    if(index == dealer_hand.length - 1 && ev == 1) {
+                        dealer.innerHTML += `<div class="cards">${element}</div>`; 
+                    }
+
+                });
+               dealer.style.gridTemplateColumns = dealerGrid;
+               dealer_total = eval(dealer_hand.join("+"));
+               if (ev != 1) {
+                     setTimeout(() => {
+                        document.querySelector('.dealer-total').innerHTML = dealer_total;
+                     }, 650)
+                } else {
+                    document.querySelector('.dealer-total').innerHTML = dealer_total;
+                }
+                
+                user_hand.forEach((element, index) => {
+                    userGrid += '1fr ';
+                    if(index != user_hand.length - 1) {
+                    user.innerHTML += `<div class="cards">${element}</div>`;
+                    } 
+                    if(index == user_hand.length - 1 && ev != 2) {
+                        user.innerHTML += `<div class="cards last-card">${element}</div>`; 
+                    }
+                    if(index == user_hand.length - 1 && ev == 2) {
+                        user.innerHTML += `<div class="cards">${element}</div>`; 
+                    }
+                });
+                user.style.gridTemplateColumns = userGrid;
+                user_total = eval(user_hand.join("+"));
+                if (ev != 2) {
+                     setTimeout(() => {
+                        document.querySelector('.user-total').innerHTML = user_total;
+                     }, 650)
+                } else {
+                    document.querySelector('.user-total').innerHTML = user_total;
+                }
+                checkUserHand();
+                
+            }
+
+            document.getElementById("mybet").addEventListener("keyup", e => {
+                if(parseInt(e.target.value) > chips || e.target.value == '') {
+                    placebet.querySelector('.btn-div').innerHTML = `<span>You only have ${chips} chips</span>`;
+                } else {
+                   placebet.querySelector('.btn-div').innerHTML = `<button onclick="dish(0)">Play</button>`; 
+                }
+            })
+            
+            function dish(e) {
+                number_of_plays++;
+                bet = parseInt(document.getElementById("mybet").value);
+                pot.innerHTML = bet;
+
+                placebet.style.display = 'none';
+                tools.innerHTML = `<button onclick="clearCard()">Clear</button><button onclick="hit()">Card</button><button onclick="stay()">Stay</button>`;
+                for(let i = 0; i < 3; i++) {
+                    if(i < 2) {
+                        let x = random_num();
+                        while(i == 1 && user_hand[0] == 11 && x == 11) {
+                            x = random_num();
+                        }
+                        user_hand.push(x);
+                    } else {
+                        dealer_hand.push(random_num());
+                    }
+                }
+                display(3);
+            }
+
+            function clearCard() {
+                chips -= Math.floor(bet/2);
+                replay();
+            }
+
+            function replay() {
+                displayChips()
+                placebet.style.display = 'block';
+                localStorage.setItem("chips", chips);
+                if(chips <= 0) {
+                    placebet.innerHTML = "You out of chips<br> Come back tomorrow";
+                }
+                tools.innerHTML = '';
+                dealer_hand = [],
+                user_hand = [],
+                split_hand = [],
+                dealer_total = 0,
+                user_total = 0,
+                bet = 1,
+                losewin.innerHTML = '',
+                losewin.style.animation = 'none';
+                user_stay = false;
+                dealer.innerHTML = ``;
+               document.querySelector('.dealer-total').innerHTML = '';
+                user.innerHTML = ``;
+                document.querySelector('.user-total').innerHTML = '';
+            }
+
+            function checkUserHand() {
+                if(user_total > 21) {
+                    setTimeout(() => {
+                        tools.innerHTML = '<button id="playagain" onclick="replay()">Play Again</button>';
+                        losewin.innerHTML = "You Lost<br><small>You busted</small>";
+                    }, 1500)
+                    losewin.style.animation = 'bj 0.7s ease-in forwards';
+                    chips -= bet;
+                    return;
+                }
+                if(user_total == 21) {
+                    setTimeout(() => {
+                        tools.innerHTML = '<button id="playagain" onclick="replay()">Play Again</button>';
+                        losewin.innerHTML = "You win!!!<br><small>You hit 21</small>";
+                    }, 1500)
+                    losewin.style.animation = 'bj 0.7s ease-in forwards';
+                    chips += bet;
+                    return;
+                }
+
+                // ****************** ************************
+
+                if(dealer_total > 21) {
+                    setTimeout(() => {
+                        document.querySelector('.tools').innerHTML = '<button id="playagain" onclick="replay()">Play Again</button>';
+                        losewin.innerHTML = "You win!!!<br><small>Dealer busted</small>";
+                    }, 1500)
+                    losewin.style.animation = 'bj 0.7s ease-in forwards';
+                    chips += bet;
+                    return;
+                }
+                if(dealer_total == 21) {
+                    setTimeout(() => {
+                        tools.innerHTML = `<button id="playagain" onclick="replay()">Play Again</button>`;
+                        losewin.innerHTML = "You Lost<br><small>Dealer hit 21</small>";
+                    }, 1500)
+                    losewin.style.animation = 'bj 0.7s ease-in forwards';
+                    chips -= bet;
+                    return;
+                }
+
+                if(user_stay) {
+                    compare();
+                }
+                
+            }
+
+            function compare() {
+                if(user_total >= dealer_total && user_total < 21 && dealer_total < 21 && dealer_total >= 17) {
+                    chips += bet;
+                    setTimeout(() => {
+                        losewin.innerHTML = "You win!!!";
+                        tools.innerHTML = `<button id="playagain" onclick="replay()">Play</button>`;
+                    },1500)
+                }
+                if(user_total < dealer_total && user_total < 21 && dealer_total < 21) {
+                    chips -= bet;
+                    clearInterval(timer);
+                    clearInterval(second_timer);
+                    setTimeout(() => {
+                        losewin.innerHTML = "You lost";
+                        tools.innerHTML = `<button id="playagain" onclick="replay()">Play</button>`;
+                    }, 1500)
+                }
+                losewin.style.animation = 'bj .7s ease-in forwards';
+            }
+
+            function hit() {
+                user_hand.push(random_num());
+                display(1);
+            }
+
+            function stay() {
+                user_stay = true;
+                document.querySelector('.tools').innerHTML = '';
+                if(played_before) {
+                    var timer = setInterval(() => {
+                    if(dealer_total < 17) {
+                    dealer_hand.push(random_num());
+                    display(2);
+                    } else {
+                        clearInterval(timer);
+                        
+                    }
+                }, 1600);
+                } else {
+                    if(number_of_plays > 2) {
+                        played_before = true;
+                        localStorage.setItem("played-before", played_before);
+                    }
+                    second_timer = setInterval(() => {
+                    var y = dealer_hand.length - 1;
+                    if(dealer_total < 17) {
+                    dealer_hand.push(busthand[dealer_hand[0] -1][y]);
+                    display(2);
+                    } else {
+                        clearInterval(second_timer);
+                        
+                    }
+                }, 1600);
+                }
+            }
+
+
+            function firstPlays(total) {
+                if(total > 10 && total <= 17) {
+                    
+                }
+            }
+
+            
+        </script>
+    </body>
+</html>

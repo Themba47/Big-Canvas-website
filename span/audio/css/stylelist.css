@@ -1,0 +1,472 @@
+body {
+	font-family: 'Quicksand', sans-serif;
+	padding: 0;
+	margin: 0;
+	overflow: 
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+}
+
+
+#header {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	
+	height: 60px;
+	display: grid;
+	text-align: center;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.kop {
+	background: #000;
+	color: red;
+}
+
+#header div a {
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+
+}
+
+#brand {
+	float: left;
+}
+
+#brand img {
+    height: 60px;
+    width: 60px;
+}
+
+nav {
+	text-align: right;
+}
+
+nav ul .nav-item {
+	display: inline-block;
+	padding: 0 3%;
+}
+
+nav ul .nav-item a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #d5d5d5;;
+
+}
+
+nav #burger a {
+	display: none;
+
+}
+
+nav ul .nav-item a:hover {
+	color: #fff;
+}
+
+
+#welcome-to-list {
+	background-image: url(../img/audioboekie.jpg) ;
+	background-size: cover;
+	background-position: center;
+	height: 80vh;
+}
+
+/* centering text vertically */
+.content h2 {
+	text-align: center;
+	top: 45%;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	transform: translate(-50%, -150%);
+	font-size: 50px;
+	color: transparent;
+	animation: movie 2s ease 0.5s forwards;	
+}
+
+.content p {
+	text-align: center;
+	top: 45%;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	transform: translate(-50%, -25%);
+	font-size: 20px;
+	color: transparent;
+	animation: movie 2s ease 0.5s forwards;	
+}
+
+
+
+@keyframes movie {
+	0% {
+	-webkit-text-stroke: 0.1px transparent; 
+	text-stroke: 0.1px transparent;
+	}
+
+	70% {
+	-webkit-text-stroke: 0.75px #fff; 
+	text-stroke: 0.75px #fff;
+
+	}
+
+	100% {
+	-webkit-text-stroke: 0.75px #fff; 
+	text-stroke: 0.75px #fff;
+	color: #fff;
+	}
+}
+
+
+
+ #views-span {
+	text-align: center;
+	text-decoration: none;
+	background-color: #3a4aff;
+	top: 55%;
+	left: 45%;
+	padding: 1%;
+	border-radius: 15px;
+	margin: 0;
+	position: absolute;
+	transition: 1s
+	transform: translate(-20%, -50%);
+	font-size: 20px;
+	color: white;
+	box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+	animation: pulse 2s ease-in-out 2.5s infinite;	
+}
+
+
+@keyframes pulse {
+	0% {
+		background-color: #3a4aff;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+		transform: scale(0.95);
+	}
+
+	70% {
+		background-color: #99a1ff;
+		box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+		transform: scale(1);
+	}
+
+	100% {
+		background-color: #3a4aff;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		transform: scale(0.95);
+	}
+}
+
+#views-span:hover {
+	box-shadow: inset 0 0 0 0 15px #fff;
+}
+
+
+.content {
+	text-align: center;
+	margin: 0 30%;
+	padding: 2.5% 0;
+}
+
+.diespan {
+	text-align: center;
+	margin: 0;
+	padding: 2.5% 0;
+}
+
+.section a {
+	text-decoration: none;
+}
+
+.diespan h1 {
+	text-decoration: none;
+	color: #fff;
+	font-size: 50px;
+	margin-bottom: 0;
+	transform: translate(0, 100px);
+}
+
+.diespan p {
+	text-decoration: none;
+	color: #fff;
+	font-size: 20px;
+	margin: 0 5px 0 5px;
+	transform: translate(0, 100px);
+}
+
+
+#theList {
+	background-image: url(../img/sky.jpg) ;
+	text-align: center;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+#booksection {
+	color: grey;
+}
+
+.stock-books {
+	background-color: #fff;
+}
+
+.cnn:hover {
+	-webkit-filter: drop-shadow(5px 7px 3.5px #747474);
+    filter: drop-shadow(5px 7px 3.5px #747474);
+}
+
+.stock-books a {
+	text-decoration: none;
+	color: blue;
+}
+
+.cnn img {
+	margin: 5%;
+	width: 100px;
+	
+}
+
+#contact-form {
+	text-align: center;
+	margin: 100px 25%;
+	background-color: black;
+	border-radius: 30px;
+	color: #fff;
+	font-size: 20px;
+	padding: 5%;
+}
+
+#contact-form label {
+	margin-bottom: 20px;
+	color: #3a4aff;
+}
+
+#contact-form input, textarea {
+	width: 55%;
+	height: 40px;
+	font-size: 20px;
+	padding: 0 5%;
+	border: 2px solid #3a4aff;
+	background-color: transparent;
+	color: #fff;
+	box-shadow: 0px 0px 20px 5px #3a4aff;
+	border-radius: 30px;
+}
+
+textarea {
+	height: 150px;
+}
+
+#contact-form button, #leave-msg {
+	font-size: 20px;
+	color: white;
+	background-color: #3a4aff;
+	padding: 2.5% 7.5%;
+	transition: 0.5s;
+	border: 1px solid #3a4aff;
+	border-radius: 15px;
+}
+
+#contact-form button:hover, #leave-msg:hover {
+	box-shadow: inset 0 0 0 25px #99a1ff;
+}
+
+.theheaders h1 {
+	font-size: 32px;
+	text-decoration: underline 3px red;
+}
+
+#gallery-work {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.thesummary {
+	text-align: center;
+	padding: 0.5% 0 2.5% 0;
+}
+
+.social-icons a img {
+	filter: opacity(0.5);
+}
+
+.social-icons a img:hover {
+	filter: opacity(1);
+}
+
+footer {
+	text-align: center;
+	height: 40px;
+	color: white;
+	background: #000;
+}
+
+#summary {
+	background: black;
+	color: white;
+}
+
+footer p {
+	top: 50%;
+	margin: 0;
+	text-align: center;
+	transform: translate(0, 50%);
+
+}
+
+.tab {
+	display: none;
+}
+
+
+
+
+
+
+/* small screen */
+
+@media(max-width: 768px){
+	#welkom h1 {
+		font-size: 40px;
+		width: 80%;
+	}
+
+nav ul {
+	display: none;
+
+}
+
+
+nav #burger a {
+	display: inline-block;
+	margin: 2% 0 0 0;
+
+}
+
+#welcome-to-list {
+	background-image: url(../img/audioboekie.jpg) ;
+	background-size: cover;
+	background-position: center;
+	height: 60vh;
+}
+
+
+#header {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#header div a {
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+
+}
+
+#gallery-work {
+	grid-template-columns: 1fr;
+}
+
+#brand img {
+    height: 25px;
+    width: 25px;
+}
+
+.content {
+	text-align: center;
+	margin: 0;
+	padding: 2.5% 0;
+}
+
+.content h2 {
+	width: 100%;
+	font-size: 30px;
+}
+
+.content p {
+	width: 80%;
+	font-size: 15px;
+}
+
+#views-span {
+	padding: 2%;
+	left: 35%;
+}
+
+#contact-form {
+
+	margin: 50px 5%;
+}
+
+#theList {
+	display: grid;
+	grid-template-columns: 1fr;
+}
+
+#contact-form input, textarea {
+	width: 65%;
+	height: 40px;
+	font-size: 15px;
+	padding: 0 5%;
+	border: 2px solid #3a4aff;
+	background-color: transparent;
+	color: #fff;
+	box-shadow: 0px 0px 20px 5px #3a4aff;
+	border-radius: 30px;
+}
+
+textarea {
+	height: 150px;
+}
+
+.tab {
+	position: fixed;
+	z-index: 1030;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr; 
+	background: white;
+	-webkit-filter: drop-shadow(5px -1px 3.5px #747474);
+    filter: drop-shadow(5px -1px 3.5px #747474);
+}
+
+
+
+
+.tab a {
+	text-align: center;
+	
+}
+
+.tab a img{
+	transform: translate(0, 20%);
+
+}
+
+.tab a:hover {
+	background-color:lightgrey;
+}
+
+
+.diespan p {
+	display: none;
+}
+
+
+
+}

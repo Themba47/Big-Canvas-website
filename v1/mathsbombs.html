@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-157351814-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-157351814-1');
+</script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Maths Bombs</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/stylequiz.css">
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                font-family: "Quicksand", sans-serif;
+            }
+            
+            .form-control {
+                display: block;
+                width: 100%;
+                height: calc(1.5em + .75rem + 2px);
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                background-color: #fff;
+                background-clip: padding-box;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+                transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            }
+
+            .startscreen {
+                width: 100%;
+                overflow: hidden;
+                display: grid;
+                place-items: center;
+                background-color: rgb(0, 2, 70);
+                color: #fff;
+                height: 100%;
+                position: fixed;
+            }
+            .startscreen div {
+                text-align: center;
+                width: 50%;
+                display: grid;
+                place-items: center;
+            }
+
+            .love {
+                display: grid;
+                padding: 0;
+                margin: 0;
+                height: 100vh;
+                width: 100%;
+                background-color: rgb(0, 2, 70);
+                grid-template-rows: 10% 75% 15%;
+            }
+
+            #clearsky {
+                background-image: linear-gradient(#60d1f3 70%, #019950);
+            }
+
+            #bombdropped {
+                background-image: linear-gradient(rgb(250, 183, 120), red);
+            }
+
+
+            .kop {
+                background-color: rgb(0, 2, 70);
+                color: #fff;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            #title, #homebtn {
+                display: grid;
+                place-items: center;
+                text-align: center;
+            }
+
+            #homebtn a {
+                color: #fff;
+                font-size: xx-large;
+
+            }
+
+            #numbers {
+                display: grid;
+                place-items: center;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #numbers h1 {
+                padding: 0;
+                margin: 0;
+
+            }
+
+            .tools {
+                background-color: rgb(0, 2, 70);
+                overflow: hidden;
+                display: grid;
+                grid-template-rows: 40% 60%;
+            }
+            .question {
+                color: #fff;
+                font-size: xx-large;
+                display: grid;
+                text-align: center;
+            }
+
+            .sum-options {
+                display: grid;
+                place-items: center;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+
+            .ans {
+                width: 50px;
+                height: 50px;
+                color: #fff;
+                font-size: x-large;
+                border: none;
+                border-radius: 15px;
+                background-color: tomato;
+            }
+
+            .bomb {
+                position: absolute;
+                background-image: url(img/bomb.png);
+                background-size: contain;
+                width: 40px;
+                height: 40px;
+                transition: transform 3s linear;
+            }
+
+            .active_bomb {
+                border: 1px solid red;
+            }
+
+            @media (max-width: 768px) {
+                    #numbers h1, #title h1, #homebtn a  {
+                    font-size: medium;
+                }
+                .tools {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                padding 2% 0;
+            }
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="startscreen">
+                <div>
+                    <h1 class="welcome-msg">Welcome to MathBombs</h1>
+                    <p> Defend the city by destroying<br> the bombs before they reach the city<br></p>
+                    <button class="startgamebtn" onclick="startGame()">Start Game</button>
+                </div>
+            </div>
+            <div class="love">
+                <div class="kop">
+                    <div id="homebtn">
+                        <a href="/index.php"><i class='fas fa-home'></i></a>
+                    </div>
+                    <div id="title">
+                        <h1>MathBombs</h1>
+                    </div>
+                    <div id="numbers">
+                        <h1 id="score">0</h1>
+                        <h1 id="time">60</h1>
+                    </div>
+                </div>
+                <div class="screen" id="clearsky">
+                
+                </div>
+                <div class="tools">
+                    <div class="question"></div>
+                    <div class="sum-options"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="js/maths.js"></script>
+    </body>
+</html>

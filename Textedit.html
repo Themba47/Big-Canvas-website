@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Invoice of Mowbooks</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            #container {width: 600px;}
+            .title {
+                width: 100%;
+                height: 60px;
+                background-color: #000;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .title h2 {
+                color: #fff;
+                text-align: center;
+            }
+
+            .title #logo {
+                color: crimson;
+                margin-left: 2%;
+                margin-top: 2%;
+            }
+
+            .the_canvas {
+                padding: 5% 2.5%;
+                background-color: #d6e8ee;
+            }
+
+            #orderanddate {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            #orderanddate p {
+                text-align: right;
+            }
+
+            table {
+                border-collapse: collapse;
+                width: 50%;
+                border: 2px solid #000;
+            }
+
+            table tr:nth-child(odd) {
+                background-color: rgb(255, 255, 255);
+                color:rgb(0, 0, 0);
+            }
+
+            table tr:nth-child(1) {
+                background-color: #000;
+                color:cornsilk;
+            }
+
+            #total {
+                width: 100%;
+                display: grid;
+                text-align: right;
+            }
+
+            .footer {
+                width: 100%;
+                height: 60px;
+                background-color: #000;
+                display: grid;
+                place-items: center;
+            }
+
+            #mytxt {
+                display: none;
+            }
+
+            #colorPallete {
+                overflow: hidden;
+                display: none;
+            }
+
+            .footer p {
+                color: #fff;
+            }
+            #drag-1{
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  touch-action: none;
+  user-select: none;
+  transform: translate(0px, 0px);
+}
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div class="title">
+                <div id="logo">
+                    <img src="img/mbslogo.png" width="50">
+                </div>
+                <h2 id="mowbooks">Mobooks</h2>
+            </div>
+            <div class="the_canvas">
+                <div id="drag-1" class="draggable">
+                    <p> You can drag one element </p>
+                  </div>
+                  
+                
+            </div>
+            <div class="footer">
+                <p id="businessreg">2021/02/2232232</p>
+            </div>
+        </div>
+        <textarea id="mytxt"></textarea>
+        <a href="javascript:void(0)" onclick="createPDF()">Action</a>
+        <a href="javascript:void(0)" id="fontsbtn">Fonts</a>
+        <a href="javascript:void(0)" id="openPallette">Colors</a><br>
+        <div id="colorPallete">
+            <a href="javascript:void(0)" onclick="myColor(0)">Color 0</a>
+            <a href="javascript:void(0)" onclick="myColor(1)">Color 1</a>
+            <a href="javascript:void(0)" onclick="myColor(2)">Color 2</a>
+            <a href="javascript:void(0)" onclick="myColor(3)">Color 3</a>
+            <a href="javascript:void(0)" onclick="myColor(4)">Color 4</a>
+        </div>
+        
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+        <script>
+            var open_text_box = false,
+            ibox = document.querySelector('#drag-1'),
+            fontsbtn = document.getElementById("fontsbtn"),
+            the_canvas = document.querySelector(".the_canvas"),
+            openPallette = document.getElementById("openPallette"),
+            txt_area = document.getElementById("mytxt"),
+            colorPallette = document.getElementById("colorPallete"),
+            colrs = ["#32a852", "#f5e7c1", "#a3d633", "#29e", "#6d22ee", "#c0a6ed", "#a6edeb"],
+            igama = "Why Not",
+            num = 0;
+            font_num = 0;
+            the_canvas.style.backgroundColor = colrs[colrs.length -1];
+
+            function myColor(e) {
+                the_canvas.style.backgroundColor = colrs[e];
+            }
+
+            txt_area.addEventListener("keyup", () => {
+                console.log(txt_area.value);
+                igama = txt_area.value;
+                document.querySelector("#drag-1 p").textContent = igama;
+                
+            })
+
+            ibox.addEventListener("dblclick", () => {
+                txt_area.style.display = "block";
+
+            });
+
+            fontsbtn.addEventListener("click", () => {
+                if(font_num >= font_array.length -1) {
+                    font_num = 0;
+                } else {
+                    font_num++;
+                }
+                document.querySelector("#drag-1 p").style.fontFamily = font_array[font_num];
+            })
+
+            openPallette.addEventListener("click", () => {
+                colorPallette.style.display = "block";
+            })
+
+            
+
+            // target elements with the "draggable" class
+interact('.draggable')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    // keep the element within the area of it's parent
+    modifiers: [
+      interact.modifiers.restrictRect({
+        restriction: 'parent',
+        endOnly: true
+      })
+    ],
+    // enable autoScroll
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+
+      // call this function on every dragend event
+      end (event) {
+        var textEl = event.target.querySelector('p')
+
+        // textEl && (textEl.textContent =
+        //   'moved a distance of ' +
+        //   (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+        //              Math.pow(event.pageY - event.y0, 2) | 0))
+        //     .toFixed(2) + 'px')
+        textEl && (textEl.textContent = igama)
+      }
+    }
+  })
+
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+  // translate the element
+  target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
+        </script>
+        <script>
+            function createPDF() {
+  domtoimage.toJpeg(document.querySelector('.the_canvas'), { quality: 0.98 })
+    .then(function (dataUrl) {
+        var link = document.createElement('a');
+        link.download = 'my-image-name.jpeg';
+        link.href = dataUrl;
+        link.click();
+    });
+
+}
+        </script>
+    </body>
+</html>

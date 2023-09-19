@@ -1,0 +1,286 @@
+body {
+	background-image: url(../img/clippers.jpg);
+	background-size: cover;
+	background-color: #000;
+	font-family: 'Quicksand', sans-serif;
+	padding: 0;
+	margin: 0;
+	overflow: 
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+}
+
+
+#header {
+	background: #000;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	height: 60px;
+	display: grid;
+	text-align: center;
+	grid-template-columns: 20% 20% 20% 40%;
+}
+
+#welcome-name {
+	color: white;
+}
+
+
+
+.kop {
+	background: #000;
+	color: red;
+}
+
+#header div a {
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+
+}
+
+#header div .log {
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+
+}
+
+#brand {
+	float: left;
+}
+
+nav {
+	text-align: right;
+}
+
+nav ul .nav-item {
+	display: inline-block;
+	padding: 0 3%;
+}
+
+nav ul .nav-item a {
+	text-decoration: none;
+	font-size: 18px;
+	color: #d5d5d5;
+
+}
+
+nav #burger a {
+	display: none;
+
+}
+
+nav ul .nav-item a:hover {
+	color: #fff;
+}
+
+
+#welcome-page {
+	background-image: url(../img/clippers.jpg);
+	filter: grayscale(100%);
+	background-size: cover;
+	height: 100vh;
+}
+
+/* centering text vertically */
+.content h1 {
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	font-size: 50px;
+	color: white;
+	
+}
+
+#title, nav, #login {
+	margin-top: 10px;
+}
+
+
+#signin-page, #bookform {
+	text-align: center;
+	background-color: #000000c4;
+	margin: 0 30%;
+	color: #fff;
+}
+
+#bookform {
+	padding-top: 80px;
+	text-align: center;
+}
+
+#signin-page input, #bookform input {
+	width: 200px;
+	height: 40px;
+	padding: 0 25px;
+	border-radius: 30px;
+	text-decoration: none;
+	font-size: 18px;
+	border: 
+}
+
+.buttons {
+	background-color: red;
+	color: white;
+	font-size: 18px;
+	border: none;
+	margin: 3%;
+}
+
+.login-button {
+	background-color: red;
+	color: white;
+	font-size: 30px;
+	text-decoration: none;
+	padding: 2% 5%;
+	border-radius: 25px;
+}
+
+.log {
+	border: 2px #fff solid;
+	padding: 1.5%;
+}
+
+.content {
+	text-align: center;
+	color: #fff;
+	margin: 0 30%;
+	padding: 2.5% 0;
+}
+
+.theheaders h1 {
+	font-size: 32px;
+	text-decoration: underline 3px red;
+}
+
+.thesummary {
+	text-align: center;
+	padding: 0.5% 0 2.5% 0;
+}
+
+.social-icons a img {
+	filter: opacity(0.5);
+}
+
+.social-icons a img:hover {
+	filter: opacity(1);
+}
+
+footer {
+	text-align: center;
+	height: 40px;
+	color: white;
+	background: #000;
+}
+
+#summary {
+	background: black;
+	color: white;
+}
+
+footer p {
+	top: 50%;
+	margin: 0;
+	text-align: center;
+	transform: translate(0, 50%);
+
+}
+
+.tab {
+	display: none;
+}
+
+
+@media(max-width: 768px){
+	#welkom h1 {
+		font-size: 40px;
+		width: 80%;
+	}
+
+nav ul, #login {
+	display: none;
+
+}
+
+body {
+	background-repeat: no-repeat;
+	height: 100vh;
+}
+
+#welcome-page {
+	background-image: url(../img/clippers.jpg) ;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+}
+
+nav #burger a {
+	display: inline-block;
+	margin: 2% 0 0 0;
+
+}
+
+
+#header {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+#header div a {
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+
+}
+
+.content {
+	text-align: center;
+	margin: 0;
+	padding: 2.5% 0;
+}
+
+.tab {
+	position: fixed;
+	z-index: 1030;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	height: 40px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr; 
+	background: #fff;
+}
+
+.tab a {
+	text-align: center;
+	
+}
+
+.tab a img{
+	transform: translate(0, 20%);
+
+}
+
+.tab a:hover {
+	background-color:#1c2ac8;
+}
+
+#signin-page, #bookform {
+	padding-top: 80px;
+	color: #fff;
+	background-color: #00000091;
+	margin: 0;
+	text-align: center;
+}
+
+
+}
